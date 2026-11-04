@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Masalino | Her renk başka bir masal anlatır</title>
+<style>
+* {
+  box-sizing:border-box}
+:root {
+  --wine:#702d36; --brown:#65473c; --cream:#fff8ec;
+  --line:#e9d5bc}
+html {
+  scroll-behavior:smooth}
+[hidden] {
+  display:none!important}
+img,svg {
+  max-width:100%}
+button,a {
+  touch-action:manipulation}
+body {
+  margin:0; background:var(--cream); color:#392d2b;
+  font:17px/1.6 "Trebuchet MS",Verdana,sans-serif}
+h1,h2,h3 {
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.2}
+header {
+  background:#fbf0df; text-align:center;
+  border-bottom:2px solid var(--line)}
+.topbar {
+  background:var(--wine); color:white; padding:12px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap}
+.topbar strong {
+  font:700 25px Georgia,serif}
+.topbar nav {
+  display:flex; gap:8px;
+  flex-wrap:wrap}
+nav a {
+  color:white; text-decoration:none; padding:8px 13px;
+  border-radius:12px}
+nav a:hover,nav a:focus-visible {
+  background:#ffffff26}
+.brand {
+  padding:12px 15px 4px}
+.brand svg {
+  display:block; width:min(230px,70vw); height:125px;
+  margin:auto}
+.brand h1 {
+  color:var(--wine); font-size:clamp(38px,6vw,58px);
+  margin:-6px 0 0}
+.brand p {
+  margin:0; color:var(--brown);
+  font-weight:bold}
+.intro {
+  max-width:650px; margin:7px auto 14px;
+  padding:0 15px}
+.hero-wrap {
+  position:relative; width:min(650px,92vw);
+  margin:10px auto 18px}
+.hero-art {
+  display:block; width:min(650px,92vw); height:auto;
+  max-height:none; object-fit:contain; border-radius:22px;
+  margin:0;
+  border:3px solid #f2ddc2}
+.tools {
+  display:flex; gap:10px; justify-content:center;
+  align-items:center; flex-wrap:wrap;
+  margin:12px auto}
+input,button {
+  font:inherit}
+input {
+  padding:10px 15px; border:2px solid #bda28d; border-radius:14px;
+  max-width:90vw; width:280px;
+  background:white}
+button {
+  cursor:pointer; border:0; border-radius:12px;
+  background:var(--wine); color:white;
+  padding:10px 15px}
+button:hover,button:focus-visible {
+  background:#98434e;
+  outline:2px solid #c89a6b}
+.daily {
+  max-width:1050px; margin:20px auto 0; padding:14px 20px;
+  background:#f3e3d1; border-radius:20px; display:flex;
+  justify-content:center; align-items:center; gap:16px;
+  flex-wrap:wrap}
+.daily strong {
+  font-family:Georgia,serif; color:var(--wine);
+  font-size:21px}
+.grid {
+  max-width:1120px; margin:26px auto; padding:0 18px;
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px}
+.card {
+  display:flex; align-items:center; gap:10px;
+  min-height:122px; padding:10px; text-align:left;
+  border:2px solid #ead8c6; border-radius:20px; background:var(--c);
+  color:#5d2732;
+  box-shadow:0 4px 9px #6c352010}
+.card h3 {
+  font-size:19px; margin:0;
+  overflow-wrap:anywhere}
+.art {
+  flex:none; width:94px; height:94px;
+  display:grid;
+  place-items:center}
+.art svg {
+  width:90px;
+  height:90px}
+.reader,.about,.sources {
+  scroll-margin-top:18px; max-width:850px; margin:24px auto;
+  padding:26px; background:#fffdf9; border:1px solid var(--line);
+  border-radius:22px}
+.reader {
+  display:none}
+.reader h2 {
+  text-align:center;
+  color:var(--wine)}
+.reader .art {
+  width:125px; height:125px; margin:auto;
+  background:#f8e8d7;
+  border-radius:20px}
+.reader .art svg {
+  width:115px;
+  height:115px}
+#story {
+  line-height:1.85; white-space:pre-line; max-width:68ch;
+  margin:20px auto}
+.reference {
+  font-size:14px;
+  color:#67544d}
+.about {
+  display:none}
+.about h2,.sources h2 {
+  color:var(--wine);
+  margin-top:0}
+.about {
+  background:#f8ebd9}
+.sources li {
+  margin:8px 0}
+footer {
+  text-align:center; background:var(--wine); color:white;
+  padding:20px;
+  margin-top:30px}
+@media(max-width:900px) {
+  .grid {
+  grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:540px) {
+  .topbar {
+  justify-content:center}
+.grid {
+  gap:9px;
+  padding:0 10px}
+.card {
+  flex-direction:column; min-height:155px; text-align:center;
+  padding:8px}
+.card h3 {
+  font-size:16px}
+.art {
+  width:80px;
+  height:80px}
+.art svg {
+  width:76px;
+  height:76px}
+.reader,.about,.sources {
+  margin:15px 10px;
+  padding:17px}
+.hero-art {
+  max-height:220px}
+}
+@media(max-width:380px) {
+  .grid {
+  grid-template-columns:1fr}
+.card {
+  flex-direction:row; min-height:105px;
+  text-align:left}
+.topbar nav {
+  justify-content:center}
+.tools button {
+  padding:9px 11px}
+.reader,.about,.sources {
+  padding:14px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+  scroll-behavior:auto}
+}</style>
+</head>
+<body>
+<header>
+<div class="topbar"><strong>✦ Masalino</strong><nav aria-label="Ana menü"><a href="#grid" id="navStories">Masallar</a><a href="#about" id="navAbout">Hakkımızda</a><a href="#sources" id="navSources">Kaynakça</a></nav>
+</div>
+<div class="brand">
+<svg viewBox="0 0 340 200" role="img" aria-label="Açık masal defterinin sayfalarından yükselen gökkuşağı">
+<g fill="none" stroke-width="9" stroke-linecap="round"><path d="M98 126 A72 72 0 0 1 242 126" stroke="#e990a0"/><path d="M108 126 A62 62 0 0 1 232 126" stroke="#f4b378"/><path d="M118 126 A52 52 0 0 1 222 126" stroke="#f3d47c"/><path d="M128 126 A42 42 0 0 1 212 126" stroke="#9dcda7"/><path d="M138 126 A32 32 0 0 1 202 126" stroke="#91bce0"/><path d="M148 126 A22 22 0 0 1 192 126" stroke="#b69bdb"/></g>
+<path d="M170 144 Q131 125 69 136 L69 178 Q128 170 170 191 Q212 170 271 178 L271 136 Q209 125 170 144Z" fill="#edc9a3" stroke="#80549e" stroke-width="2"/><path d="M170 144 Q128 125 77 131 L77 172 Q128 166 170 185Z" fill="#fffdf8" stroke="#80549e" stroke-width="2"/><path d="M170 144 Q212 125 263 131 L263 172 Q212 166 170 185Z" fill="#fffdf8" stroke="#80549e" stroke-width="2"/><path d="M170 144 V185" stroke="#80549e" stroke-width="2"/>
+<g fill="#e8ad65"><path d="M72 65 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4Z"/><path d="M273 52 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3Z"/></g></svg>
+<h1>Masalino</h1><p>Her renk başka bir masal anlatır.</p>
+</div>
+<p class="intro">Türk masallarının büyülü dünyasında sekiz farklı hikâye keşfet.</p>
+<div class="hero-wrap">
+<img id="hero" class="hero-art" alt="Yapay zekâyla üretilmiş masalsı kale illüstrasyonu" width="650" height="350">
+</div>
+<div class="daily"><strong>✦ Günün Masalı</strong><button id="daily">Bugünün masalını oku</button></div>
+<div class="tools"><input id="search" type="search" placeholder="Masal ara..." aria-label="Masal ara"><button id="home">Tüm masallar</button></div>
+</header>
+
+<main>
+<div id="grid" class="grid"></div>
+<article id="reader" class="reader">
+<button id="back">← Masallara dön</button><h2 id="title"></h2><div id="picture" class="art" role="img" aria-label="Masal için simgesel çizim"><span id="symbol"></span></div>
+<div class="tools"><button id="kid">🧸 Çocuk anlatımı</button><button id="adult">📖 Yetişkin anlatımı</button><button id="smaller">A−</button><button id="larger">A+</button></div>
+<p id="story"></p><p id="reference" class="reference"></p>
+<div class="tools"><button id="prev">← Önceki masal</button><button id="next">Sonraki masal →</button></div>
+</article>
+
+<section id="about" class="about">
+  <h2>Hakkımızda</h2>
+  <p>Masalino, Türk masallarının büyülü dünyasını çocuklarla ve masal okumayı seven herkesle buluşturmak için hazırlandı. Amacımız, kuşaktan kuşağa anlatılan hikâyeleri kolay ulaşılabilir, keyifli ve anlaşılır bir şekilde sunmak.</p>
+  <p>Sitemizde sekiz farklı Türk masalını keşfedebilir, çocuklara yönelik daha sade anlatımlarla veya yetişkinler için hazırlanmış özetlerle okuyabilirsiniz. Her masalın yanındaki küçük çizim, hikâyenin akılda kalan bir öğesini temsil eder.</p>
+  <p>Rahat okunan yazılar, sıcak renkler ve sade bir tasarımla, masal okumayı her yaştan ziyaretçi için güzel bir deneyime dönüştürmek istiyoruz.</p>
+</section>
+
+<section id="sources" class="sources" hidden><h2>📚 Kaynakça</h2>
+<p>Bu sitede Türk halk masallarının çocuklara ve yetişkinlere yönelik kısa anlatımları yer alır.</p>
+<ul><li>Pertev Naili Boratav, <i>Zaman Zaman İçinde</i>: Nardaniye Hanım, Fesleğenci Kızı, Ahu Melek, Arap Lala ve Dülger Kızı.</li>
+<li>Ignác Kúnos, <i>Türk Masalları</i>: Altın Saçlı Kardeşler.</li>
+<li>Dünya Güzeli: Pertev Naili Boratav, Az Gittik Uz Gittik, 1969, s. 80–91. Kara Tavuk: Boratav, Az Gittik Uz Gittik (çevrimiçi aktarımla karşılaştırıldı).</li></ul>
+<p>Masal kartları özgün SVG çizimleridir. Kapak resmi bu proje için yapay zekâyla üretilmiştir. Kapak görseli HTML dosyasına gömülüdür; site çevrimdışı çalışır.</p>
+</section>
+
+</main>
+
+<footer>Masalino · Her renk başka bir masal anlatır.</footer>
+
+<script>
+// Masallar ve küçük vektör çizimler bu dosyadadır; internet gerekmez.
+const tales = [
+  {
+  "title": "Nardaniye Hanım",
+  "kid": "Bir varmış, bir yokmuş... Nardaniye adında bir kız varmış. Üvey annesi onu kıskanır, ona türlü oyunlar oynarmış. Zavallı Nardaniye, babası tarafından bir dağda bırakılmış. Dere kenarında kendisini hasta eden yılanlardan kurtulmuş, sonra kırk haraminin evine sığınmış. Haramiler onu kardeşleri gibi korumuş. Ama üvey annesi peşini bırakmamış; önce kiraz, sonra sakızla onu zehirlemiş. Nardaniye uzun bir uykuya dalmış. Bir şehzadenin lalası boğazındaki sakızı çıkarınca gözlerini yeniden açmış. Sonunda şehzadeyle evlenmiş, kötülüklerin de hesabı sorulmuş.",
+  "adult": "Nardaniye Hanım, üvey annesinin kıskançlığı yüzünden iftiraya uğrayan ve babası tarafından terk edilen bir kızın öyküsüdür. Üvey annesi, ona yılan yutturup karnının şişmesine yol açar; ardından hamile olduğu suçlamasını ortaya atar. Dağda bırakılan Nardaniye yılanlardan kurtulur ve Kırk Haramilerin yanına sığınır. Üvey annesi bu kez zehirli kiraz ve sakızla onu öldürmeye çalışır. Sakız yüzünden bilincini kaybeden kız altın tabuta konur. Şehzadenin lalası sakızı çıkarınca Nardaniye uyanır. Şehzadeyle evlenir ve üvey annesi cezalandırılır.",
+  "source": "Pertev Naili Boratav, Zaman Zaman İçinde",
+  "color": "#ffd4e8"
+},
+  {
+  "title": "Fesleğenci Kızı",
+  "kid": "Bir zamanlar fesleğenlerini sulamayı çok seven, akıllı bir kız yaşarmış. Beyoğlu ona ‘Fesleğeninin kaç yaprağı var?’ diye takılınca kız da ‘Gökte kaç yıldız var?’ diye sorarmış. Bir gün Beyoğlu kızı öpmeye kalkışınca kız hiç çekinmeden karşılık vermiş. Sonra delikanlı uzak ülkelere gitmeye karar vermiş. Kız da erkek kılığına girip ondan önce Hindistan'a, Çin'e ve Arabistan'a ulaşmış. Her yerde karşısına çıkıp satranç oynamış, onu şaşırtmış. İkisi evlerine döndüğünde Beyoğlu sevgisini söylemiş. Kız da yolculuklarda karşılaştığı gizemli kişinin kendisi olduğunu açıklamış. Sonunda evlenmişler.",
+  "adult": "Fesleğenci Kızı, hazırcevap bir genç kızla Beyoğlu arasındaki aşkı ve zekâ yarışını anlatır. Fesleğen yapraklarıyla yıldızların sayısı üzerine başlayan sözlü atışmalar, Beyoğlu'nun kızın sınırlarını zorlamasıyla çatışmaya dönüşür. Beyoğlu Hindistan, Çin ve Arabistan'a giderken kız erkek kılığına girerek ondan önce bu ülkelere ulaşır; satranç karşılaşmalarında çeşitli hediyeler kazanır. Arabistan'da Beyoğlu'na sevdiği kişiye açılmasını öğütler. Memlekete döndüklerinde Beyoğlu aşkını itiraf eder; kız da yolculuklardaki rakibinin kendisi olduğunu açıklar. İkisi evlenir.",
+  "source": "Pertev Naili Boratav, Zaman Zaman İçinde",
+  "color": "#c9f4d1"
+},
+  {
+  "title": "Ahu Melek",
+  "kid": "Bir varmış, bir yokmuş... Ahu Melek adında cesur bir padişah kızı varmış. Babasının onun için düşündüğü evliliği istemeyince kendine altından kocaman bir öküz yaptırmış ve içine saklanmış. Altın öküz denizleri aşarak başka bir şehzadenin sarayına ulaşmış. Ahu Melek geceleri gizlice dışarı çıkıp yemek yerken şehzade onu fark etmiş. İkisi birbirini sevmiş ama kıskanç bir eski nişanlı yollarına engeller koymuş. İyi kalpli yaşlı bir çöpçü Ahu Melek'e yardım etmiş. Bir yüzük, bir çorba ve türlü maceralardan sonra sevgililer birbirini yeniden bulmuş. Bir dervişin yardımıyla son büyük tehlikeyi de atlatmışlar.",
+  "adult": "Ahu Melek, babasının kendisiyle evlenmek istemesine karşı çıkarak kaçış planı yapan bir padişah kızını konu alır. Altından yaptırdığı öküzün içine saklanıp denize açılır. Öküzü bulan başka bir ülkenin şehzadesi onu saraya getirir ve geceleri dışarı çıkan Ahu Melek'i keşfeder. İkisi âşık olur; ancak şehzadenin eski nişanlısının kıskançlığı yüzünden Ahu Melek zarar görür ve kaybolur. Yaşlı bir çöpçünün yardımıyla iyileşir. Yüzüğünün bir çorbada bulunması şehzadenin onun yaşadığını anlamasını sağlar. Yeni sınavlar ve ağır bir kaybın ardından dervişin yardımıyla kavuşurlar; eski nişanlı cezalandırılır.",
+  "source": "Pertev Naili Boratav, Zaman Zaman İçinde",
+  "color": "#c8e9ff"
+},
+  {
+  "title": "Arap Lala",
+  "kid": "Bir padişahın üç kızı varmış. Bir gün lalaları onları gizemli bir konağa götürmüş. Büyük iki kardeş, kocaman Arap Lala'yı görünce korkup kaçmak istemiş. En küçük kız ise cesaretini toplayıp konakta kalmış, odaları temizleyip yemek hazırlamış. Arap Lala onun iyi kalbini görünce yardım etmeye başlamış. Meğer konakta büyülenmiş bir şehzade varmış! Kız, sihirli tokmak ve inci çevre sayesinde bu büyünün sırrını çözmüş. Şehzade özgürlüğüne kavuşmuş, kız da sevdiğiyle bir araya gelmiş. Sonunda ailesinin de katıldığı büyük bir düğün yapılmış.",
+  "adult": "Arap Lala, padişahın üç kızından en küçüğünün cesareti ve kararlılığı sayesinde büyülü bir konağın sırrını çözmesini anlatır. Büyük ve ortanca kız, korkutucu görünüşlü Arap Lala nedeniyle konakta kalmayı reddeder. En küçük kız ise orada yaşamayı seçer; konağı düzenleyip sorumluluk alır. Arap Lala ona sihirli bir tokmakla yardım eder. Konağın ardındaki olayların, bir şehzadenin peri padişahının kızı tarafından büyülenmesiyle ilişkili olduğu anlaşılır. Genç kız inci çevreyi kullanarak büyüyü bozar. Şehzade kurtulur, ikisi evlenir ve aileleri yeniden bir araya gelir.",
+  "source": "Pertev Naili Boratav, Zaman Zaman İçinde",
+  "color": "#ffddb7"
+},
+  {
+  "title": "Dülger Kızı",
+  "kid": "Evvel zaman içinde, çocuğu olmayan bir dülger yaşarmış. Bir gün tahtadan öyle güzel bir kız yapmış ki onu kendi çocuğu gibi sevmiş. Şehzade bu kızı görüp ona âşık olmuş. Düğün yolculuğunda tahta bebek nehre atılmış; fakat sudan çıkan gelin, sihirli güçleri olan bir peri kızıymış! Saraya vardığında odasının kapısını kilitlemiş. Şehzade onu tanımaya çalışmış ama işler kolay değilmiş. Bir kadın peri kızının yaptığı mucizeleri taklit etmek isteyince komik bir duruma düşmüş. Sonunda şehzade, kapının ardındaki gizemi öğrenmiş, kızın gönlünü kazanmış ve ikisi kavuşmuş.",
+  "adult": "Dülger Kızı, çocuksuz bir marangozun tahtadan yaptığı kız figürünün çevresinde gelişen olağanüstü olayları anlatır. Şehzade figüre âşık olur; dülgerin eşi gelinin düğün odasına kadar görülmemesi şartını koşar. Yolculuk sırasında tahta bebek nehre atılır, yerine peri kızı gelir. Sarayda odasının kapısını kapatan peri kızı, şehzadeyle arasına mesafe koyar. Onun olağanüstü yeteneklerini kıskanan başka bir kadın bunları taklit etmeye çalışırken başarısız olur. Bir ihtiyarın önerisiyle şehzade kapı arkasından kızın eşyalarını konuşturduğunu duyar ve kimliğini öğrenir. Kızın gönlünü alarak onunla birleşir.",
+  "source": "Pertev Naili Boratav, Zaman Zaman İçinde",
+  "color": "#e3d0ff"
+},
+  {
+  "title": "Dünya Güzeli",
+  "kid": "Bir zamanlar gözleri görmeyen bir padişah varmış. Bir derviş, ‘Hiç gitmediğin bir yerden toprak getirirsen iyileşirsin,’ demiş. Büyük iki şehzade başaramayınca en küçük şehzade sadık atıyla yola çıkmış. Yolda parlak bir kuş tüyü bulmuş; bu tüy yüzünden başka bir padişah ondan kuşu, fil dişlerini ve Dünya Güzeli'ni getirmesini istemiş. Atı ona her görevde yardım etmiş. Dünya Güzeli de kendi kaderini seçmek istemiş. Sonunda genç şehzadeyle evlenmiş. Şehzade babasını unutmamış, getirdiği toprağı gözlerine sürmüş. Padişah yeniden görmeye başlamış ve ailesine kavuşmuş.",
+  "adult": "Dünya Güzeli, kör olan babasını iyileştirmek için yola çıkan en küçük şehzadenin sınavlarını konu alır. Bir derviş, padişahın görmesi için daha önce ayak basmadığı yerden toprak gerektiğini söyler. Ağabeyleri başarısız olurken en küçük şehzade atının yardımıyla ilerler. Bulduğu kuş tüyü nedeniyle başka bir padişah tarafından kuşu, fil dişlerini ve Dünya Güzeli'ni getirmekle görevlendirilir. Görevleri tamamlar. Dünya Güzeli yaşlı padişahla evlenmemek için iki kısrağın sütünü ister; olayların sonunda yaşlı padişah ölür, şehzade Dünya Güzeli'yle evlenir. Şehzade getirdiği toprağı babasının gözlerine sürerek onu iyileştirir.",
+  "source": "Pertev Naili Boratav, Az Gittik Uz Gittik, “Dünya Güzeli”, 1969, s. 80–91",
+  "color": "#ffeaa0"
+},
+  {
+  "title": "Kara Tavuk",
+  "kid": "Bir varmış, bir yokmuş... Çok yoksul bir hamal, bir dervişten sihirli kamçı almış. Kamçı sayesinde Kara Tavuk'a ulaşmış. Bu özel tavuk her sabah yumurtlarmış; hamal yumurtaları satınca zenginleşmiş. Bir gün uzun bir yolculuğa çıkmış. O yokken çocuklarının başına kötü şeyler gelmeye başlamış. İyi kalpli aşçı onları uyarınca kardeşler evden kaçmış. Yolları, yeni padişahını bir kuşun seçtiği ülkeye düşmüş. Kuş dönüp dolaşıp küçük kardeşin başına konmuş! Küçük kardeş padişah olmuş. Sonra ailesini saraya çağırıp gerçeği ortaya çıkarmış, kendilerine yardım eden aşçıyı da unutmamış.",
+  "adult": "Kara Tavuk, yoksul bir hamalın dervişten aldığı sihirli kamçıyla olağanüstü yumurtalar veren bir tavuğa ulaşması ve zenginleşmesiyle başlar. Hamal hacca gidince karısı, yumurtaları almaya gelen keşişin oğluyla yakınlaşır ve çocuklarından kurtulmayı planlar. Aşçının uyarısı sayesinde çocuklar kaçar. Ulaştıkları ülkede hükümdarı seçmek için uçurulan kuş, sürekli küçük kardeşin başına konar ve çocuk padişah olur. Annesiyle babasını saraya çağırıp yaşananları açığa çıkarır. Annesi cezalandırılır; kardeşler ve onlara yardım eden aşçı yeni bir yaşama kavuşur.",
+  "source": "Pertev Naili Boratav, Az Gittik Uz Gittik, “Kara Tavuk” (çevrimiçi aktarımdan kontrol edildi)",
+  "color": "#ffbdac"
+},
+  {
+  "title": "Altın Saçlı Kardeşler",
+  "kid": "Bir zamanlar yoksul bir oduncunun üç kızı varmış. En küçük kız, padişahla evlenirse ay ve yıldız işaretli, altın saçlı iki çocuk dünyaya getireceğini söylemiş. Padişah onu duyup dileğini gerçekleştirmiş. Gerçekten de bir kız ve bir erkek bebek doğmuş! Fakat kıskanç teyzeleri bebekleri kaçırıp nehir kıyısına bırakmış. Bir keçi onları beslemiş, sonra yaşlı bir çift bulup büyütmüş. Yıllar geçince erkek kardeş, kız kardeşinin dileklerini gerçekleştirmek için Peri Kraliçesi'nin diyarına gitmiş. Üç yolculuğun sonunda Peri Kraliçesi'ni de getirmiş. Kraliçe herkesin sakladığı gerçeği anlatmış. Kardeşler annelerine ve babalarına kavuşmuş.",
+  "adult": "Altın Saçlı Kardeşler, yoksul oduncunun en küçük kızının padişahla evlenip ay ve yıldız işaretli altın saçlı ikizler doğurmasıyla gelişir. Kızın ablaları kıskançlıkla bebekleri değiştirir ve gerçek çocukları nehir kenarına bıraktırır. Çocuklar önce bir keçi tarafından beslenir, ardından yaşlı bir çiftin yanında büyür. Erkek kardeş, kız kardeşinin isteklerini yerine getirmek üzere Peri Kraliçesi'nin ülkesine üç yolculuk yapar. Sonunda kraliçeyi de getirir. Peri Kraliçesi çocukların kimliğini ve teyzelerin hilesini açıklar; anne ile çocuklar padişaha kavuşur ve cadı cezalandırılır.",
+  "source": "Ignác Kúnos, Türk Masalları, Altın Saçlı Kardeşler",
+  "color": "#d5e5ff"
+}
+];
+// Her masal için küçük, çevrimdışı çalışan SVG çizimi.
+const drawings = [
+  '<path d="M50 25V52M50 40L27 31M50 41L72 28" stroke="#60874d" stroke-width="5" fill="none"/><path d="M28 33Q10 27 18 17Q32 16 35 33M69 29Q76 12 89 20Q89 33 69 35" fill="#7bad68"/><circle cx="28" cy="65" r="18" fill="#c94b5e"/><circle cx="70" cy="65" r="18" fill="#d85b68"/><path d="M28 47L49 34M70 47L50 34" stroke="#60874d" stroke-width="3"/>',
+  '<path d="M21 59H79L72 88H28Z" fill="#c87d56" stroke="#985c43" stroke-width="3"/><path d="M50 60V15M50 48Q19 45 26 22Q46 20 50 48M50 38Q55 12 79 21Q78 43 50 45M50 56Q22 60 20 44Q38 35 50 56M50 55Q65 39 83 46Q77 65 50 62" fill="#74b16d" stroke="#4b8450" stroke-width="2"/>',
+  '<path d="M7 88H95" stroke="#91ae83" stroke-width="4"/><path d="M18 46Q20 33 40 33H61Q71 33 75 44L75 61Q65 68 51 64H29Q18 60 18 46Z" fill="#e6b34b" stroke="#916329" stroke-width="3"/><path d="M26 59V85M43 61V85M60 61V85M71 58V85" stroke="#ba8433" stroke-width="7" stroke-linecap="round"/><path d="M22 86H32M39 86H48M56 86H65M67 86H77" stroke="#805528" stroke-width="3"/><path d="M20 42Q9 33 8 45" stroke="#a77430" stroke-width="4" fill="none"/><path d="M63 40Q62 25 72 21Q84 17 89 29L90 43Q89 55 78 56Q67 56 65 47Z" fill="#f3ca65" stroke="#916329" stroke-width="3"/><path d="M68 29Q60 19 63 8Q71 12 74 22M82 22Q90 9 96 12Q97 23 87 31" fill="#d6a042" stroke="#916329" stroke-width="3" stroke-linejoin="round"/><path d="M64 32L57 28L58 39L66 42" fill="#edbd56" stroke="#916329" stroke-width="2"/><circle cx="70" cy="33" r="2.5" fill="#513b2a"/><circle cx="83" cy="33" r="2.5" fill="#513b2a"/><ellipse cx="80" cy="48" rx="9" ry="5" fill="#d99a46"/><circle cx="76" cy="48" r="1.4" fill="#8c5a30"/><circle cx="84" cy="48" r="1.4" fill="#8c5a30"/><path d="M30 43Q44 39 57 44M30 52Q44 48 57 53" fill="none" stroke="#f8df92" stroke-width="2"/>',
+  '<path d="M17 86V42H28V28H43V42H57V28H72V42H83V86Z" fill="#ad9bd3" stroke="#7866a5" stroke-width="3"/><path d="M41 86V64Q50 52 59 64V86" fill="#f7e8cc"/><path d="M22 42H78M33 28V17M66 28V17" stroke="#7866a5" stroke-width="3"/><circle cx="50" cy="20" r="7" fill="#f6d875"/>',
+  '<path d="M17 69H84V81H17Z" fill="#aa7856"/><path d="M25 81V92M76 81V92" stroke="#886044" stroke-width="5"/><path d="M29 63L66 21L80 33L43 75Z" fill="#d4a46b" stroke="#8c694a" stroke-width="3"/><path d="M35 57L68 25M41 63L74 31" stroke="#f0c895" stroke-width="3"/><path d="M68 22L78 12L90 24L80 34Z" fill="#9a9da6"/>',
+  '<path d="M12 47Q18 31 42 34L58 36L68 20L83 23L91 37L85 47L73 47L65 60L58 60L56 83H47L45 58L30 58L25 84H16L20 54Z" fill="#c78d5f" stroke="#80583f" stroke-width="2.8" stroke-linejoin="round"/><path d="M65 24L60 14L72 20L82 16L83 25" fill="#c78d5f" stroke="#80583f" stroke-width="2.5"/><path d="M65 25Q54 19 55 42Q58 48 61 51" fill="none" stroke="#6d473c" stroke-width="6"/><circle cx="79" cy="33" r="2.5" fill="#46352d"/><path d="M85 46L91 47" stroke="#80583f" stroke-width="2"/><path d="M14 43Q5 34 7 23" fill="none" stroke="#6d473c" stroke-width="5"/><path d="M25 60L23 84M51 61L51 84" stroke="#80583f" stroke-width="3"/><path d="M8 89H94" stroke="#9ab38b" stroke-width="4"/>',
+  '<ellipse cx="42" cy="60" rx="27" ry="22" fill="#625d73"/><circle cx="69" cy="37" r="15" fill="#625d73"/><path d="M81 38L96 45L81 51Z" fill="#e8bb5b"/><circle cx="74" cy="33" r="3" fill="white"/><path d="M26 79V92M43 80V92" stroke="#d9a16b" stroke-width="4"/><path d="M24 54Q39 42 54 56Q39 67 24 54" fill="#9994a8"/><ellipse cx="78" cy="82" rx="9" ry="12" fill="#f6d68a"/>',
+  '<path d="M16 88Q16 61 32 61Q48 61 48 88Z" fill="#9bbad5"/><path d="M52 88Q52 61 69 61Q85 61 85 88Z" fill="#b9a3cc"/><path d="M20 37Q18 20 33 20Q47 20 46 38L44 62H20Z" fill="#e7bc52"/><path d="M57 37Q54 20 69 20Q83 20 81 38L80 62H57Z" fill="#e7bc52"/><circle cx="33" cy="42" r="13" fill="#f4ceae"/><circle cx="69" cy="42" r="13" fill="#f4ceae"/><path d="M20 37Q20 21 34 23Q45 23 46 37M57 37Q57 21 70 23Q81 23 82 37" fill="#e7bc52" stroke="#c99939" stroke-width="2"/><path d="M21 45L21 65M45 45L45 65M57 45L57 65M81 45L81 65" stroke="#e7bc52" stroke-width="5" stroke-linecap="round"/><circle cx="29" cy="43" r="1.5" fill="#5d463e"/><circle cx="37" cy="43" r="1.5" fill="#5d463e"/><circle cx="65" cy="43" r="1.5" fill="#5d463e"/><circle cx="73" cy="43" r="1.5" fill="#5d463e"/><path d="M29 49Q33 52 37 49M65 49Q69 52 73 49" stroke="#a66f6b" fill="none" stroke-width="1.5"/><path d="M49 7L52 15L60 17L54 22L56 30L49 25L42 30L44 22L38 17L46 15Z" fill="#f1c966"/>'];
+// Seçilen masalın SVG çizimini oluşturur.
+function illustration(i){
+  return '<svg viewBox="0 0 100 100" aria-hidden="true">'+drawings[i]+'</svg>';
+}
+let current=0,mode='kid',fontSize=19;
+const $=id=>document.getElementById(id);
+// Arama sonucuna göre masal kartlarını oluşturur.
+// Arama metnine göre masal kartlarını listeler.
+function showCards(){
+  const q=$('search').value.toLocaleLowerCase('tr');
+  $('grid').replaceChildren();
+  let count=0;
+  tales.forEach((t,i)=>{
+    if(!t.title.toLocaleLowerCase('tr').includes(q))return;
+    count++;
+    const card=document.createElement('button');
+    card.className='card';card.style.setProperty('--c',['#f5d9d3','#e5ebd7','#f7e3c6','#e3d9e8','#f4dfc9','#dce8f3','#e7dce5','#f9e8c6'][i]);
+    const art=document.createElement('div');art.className='art';art.innerHTML=illustration(i);art.setAttribute('aria-label',t.title+' simgesi');
+    const heading=document.createElement('h3');heading.textContent=t.title;
+    card.append(art,heading);card.onclick=()=>openTale(i);$('grid').append(card);
+  });
+  if(!count){const p=document.createElement('p');p.textContent='Aradığın masal bulunamadı.';$('grid').append(p);}
+}
+function render(){
+  const t=tales[current];
+  $('title').textContent=t.title;$('symbol').innerHTML=illustration(current);$('picture').style.setProperty('--c',['#f5d9d3','#e5ebd7','#f7e3c6','#e3d9e8','#f4dfc9','#dce8f3','#e7dce5','#f9e8c6'][current]);$('picture').setAttribute('aria-label',t.title+' simgesi');
+  $('story').textContent=t[mode];$('story').style.fontSize=fontSize+'px';
+  $('reference').textContent='Kaynak: '+t.source;
+  $('kid').style.opacity=mode==='kid'?'1':'.55';$('adult').style.opacity=mode==='adult'?'1':'.55';
+  $('kid').setAttribute('aria-pressed',String(mode==='kid'));
+  $('adult').setAttribute('aria-pressed',String(mode==='adult'));
+}
+// Seçilen masalı açar; önceki/sonraki düğmeleri de bunu kullanır.
+// Masal okuma ekranını açar.
+function openTale(i){
+  $('about').style.display='none';$('sources').hidden=true;
+  current=(i+tales.length)%tales.length;
+  $('grid').style.display='none';$('reader').style.display='block';
+  render();$('reader').scrollIntoView();
+}
+function back(){$('reader').style.display='none';$('grid').style.display='grid';$('about').style.display='none';$('sources').hidden=true;}
+$('search').oninput=()=>{back();showCards();};
+$('home').onclick=()=>{$('search').value='';back();showCards();$('grid').scrollIntoView();};
+$('back').onclick=()=>{back();$('grid').scrollIntoView();};
+$('navStories').onclick=e=>{e.preventDefault();back();$('grid').scrollIntoView();};
+$('navAbout').onclick=e=>{e.preventDefault();back();$('grid').style.display='none';$('about').style.display='block';$('about').scrollIntoView();};
+$('navSources').onclick=e=>{e.preventDefault();back();$('grid').style.display='none';$('sources').hidden=false;$('sources').scrollIntoView();};
+$('kid').onclick=()=>{mode='kid';render();};
+$('adult').onclick=()=>{mode='adult';render();};
+$('smaller').onclick=()=>{fontSize=Math.max(15,fontSize-2);render();};
+$('larger').onclick=()=>{fontSize=Math.min(29,fontSize+2);render();};
+$('daily').onclick=()=>openTale(Math.floor(Date.now()/86400000)%tales.length);
+$('prev').onclick=()=>openTale(current-1);
+$('next').onclick=()=>openTale(current+1);
+// Tek yapay zekâ kapak görseli: küçük WebP verisi, okunabilir parçalara ayrıldı.
+const coverData = [
+  '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',
+  'PcYNwWT5KpOi70CgAAA='
+].join("");
+$("hero").src = "data:image/webp;base64," + coverData;
+showCards();
+</script>
+</body>
+</html>
